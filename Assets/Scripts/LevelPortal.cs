@@ -4,11 +4,13 @@ public class LevelPortal : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        // En tus pruebas anteriores, el collider del jugador era PlayerBody o su raíz tenía el tag Player[span_0](start_span)[span_0](end_span)
+        // Comprueba si el objeto que tocó el portal o su objeto raíz tienen la etiqueta "Player"
         if (other.CompareTag("Player") || other.transform.root.CompareTag("Player"))
         {
+            // // Verifica que exista una instancia activa de PortalSpawner en la escena
             if (PortalSpawner.Instance != null)
             {
+                // Llama a LoadNextLevel para cargar la siguiente escena
                 PortalSpawner.Instance.LoadNextLevel();
             }
         }

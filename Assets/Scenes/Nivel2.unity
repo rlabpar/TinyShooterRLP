@@ -2368,7 +2368,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -94143195873422703, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2080234182569984965, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -2424,7 +2424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179798554562508625, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: m_Speed
-      value: 3.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4010576122337921616, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2440,11 +2440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6306137803456856910, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: m_Value
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6306137803456856910, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
       propertyPath: m_MaxValue
-      value: 5
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426026836652035867, guid: 4cd8ea6a02cbafd4cb837b640744f0e3, type: 3}
+      propertyPath: _fireRate
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -76,10 +76,13 @@ public class PlayerInputController : MonoBehaviour
     {
         if (!isGrounded) return; // Mientras salto no puedo disparar
         if (_rocketPrefab == null || _fireStartPos == null) return;
+        // Instancia el cohete en _fireStartPos con la rotación del jugador y obtiene su componente RocketMover
         RocketMover newProjectile = Instantiate(_rocketPrefab, _fireStartPos.position, this.transform.rotation).GetComponent<RocketMover>();
         if (newProjectile != null)
         {
+            // Asigna al jugador como dueño del proyectil para evitar daño propio
             newProjectile.SetOwner(transform);
+            // Rota el proyectil para que mire hacia la posición 3D calculada del ratón
             newProjectile.transform.LookAt(_lookAtPos);
         }
 
@@ -110,18 +113,24 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Establece el color aguamarina para los Gizmos siguientes
         Gizmos.color = Color.aquamarine;
         if (_fireStartPos)
         {
+            // Dibuja una línea desde el punto de disparo hasta el punto objetivo
             Gizmos.DrawLine(_fireStartPos.position, _lookAtPos);
         }
+        // Dibuja una esfera de alambre de radio 0.10 en la posición _lookAtPos
         Gizmos.DrawWireSphere(_lookAtPos, 0.10f);
     }
 
     private void UpdateMousePosInWorld()
     {
+        // Crea un rayo desde la cámara principal a través de la posición 2D del ratón
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        // Lanza el rayo hasta 1000 unidades contra las capas indicadas en _clickableLayers y guarda el impacto en _hitMouse
         Physics.Raycast(ray, out _hitMouse, 1000, _clickableLayers); // _clickableLayers es la mascara de la layer que queremos considerar
+        // Construye el punto 3D usando X y Z del impacto y manteniendo la altura Y actual del jugador
         _lookAtPos = new Vector3(_hitMouse.point.x,
                                  this.transform.position.y,
                                  _hitMouse.point.z); // Posicion 3D que queremos guardar

@@ -18,11 +18,12 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) // O OnCollisionEnter si usas colisión física sin Is Trigger
     {
+        // Busca un componente EnemyHealth en el objeto golpeado (other) o en cualquiera de sus objetos padres en la jerarquía, y lo guarda en enemyHealth
         EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(damage);
-            Destroy(gameObject);
+            enemyHealth.TakeDamage(damage); // Llama al método TakeDamage del enemigo pasándole la cantidad de damage
+            Destroy(gameObject); // Destruye el GameObject de este proyectil justo después de aplicar el daño
         }
     }
 }

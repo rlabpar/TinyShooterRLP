@@ -14,11 +14,12 @@ public class CanvasRotationController : MonoBehaviour
         
     }
 
-    void LateUpdate()
+    void LateUpdate() // Se ejecuta después de Update en cada fotograma
     {
         if (Camera.main != null)
         {
-            transform.rotation = Camera.main.transform.rotation;
+            transform.rotation = Camera.main.transform.rotation; // Iguala la rotación global de este objeto a la rotación global de la cámara principal
+                                                                 // Así el Canvas queda paralelo al plano de visión de la cámara
         }
     }
 }
