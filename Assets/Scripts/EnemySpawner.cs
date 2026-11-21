@@ -6,6 +6,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab; // Arrastra aquí el prefab del Enemy
     [SerializeField] private float _spawnInterval = 5f; // Tiempo entre spawns (ej. 5 segundos)
 
+    [SerializeField] private int _maxEnemiesToSpawn = 3;   // Máximo de enemigos que creará este spawner en el nivel
+
+    private int _spawnedCount = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnRoutine()
     {
-        while (true)
+        while (_spawnedCount < _maxEnemiesToSpawn)
         {
             yield return new WaitForSeconds(_spawnInterval);
 
@@ -28,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 // Instancia el enemigo en la posición y rotación del spawner
                 Instantiate(_enemyPrefab, transform.position, transform.rotation);
+                _spawnedCount++;            
             }
         }
     }

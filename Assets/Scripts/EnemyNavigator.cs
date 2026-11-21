@@ -88,4 +88,13 @@ public class EnemyNavigator : MonoBehaviour
             }
         }
     }
+
+    public void SetFireRate(float newFireRate)
+    {
+        if (newFireRate > 0f)
+        {
+            _fireRate = newFireRate;
+        }
+    }
+
 }
